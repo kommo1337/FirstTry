@@ -15,7 +15,7 @@ namespace FirstTry.WindowFolder
         User _user;
         List<Role> _roles;
 
-        public EditUser(User user)
+        public EditUser(User user) 
         {
             InitializeComponent();
             _user = user;
