@@ -1,4 +1,5 @@
 ﻿using FirstTry.DataFolder;
+using System;
 using System.Linq;
 using System.Windows;
 
@@ -16,75 +17,58 @@ namespace FirstTry.WindowFolder
 
         private void AutoBTN_Click(object sender, RoutedEventArgs e)
         {
-            var user = DBEntities.GetContext().User.SingleOrDefault(u => u.Login == LoginTb.Text);
 
-            if (RepeatPasswordTb.Password == PasswordTb.Password)
+
+            var exUser = DBEntities.GetContext().User.SingleOrDefault(u => u.Login == LoginTb.Text);
+
+            if (PasswordTb.Password != RepeatPasswordTb.Password)
             {
-                if (IsStrongPassword(PasswordTb.Password))
-                {
-
-                    if (user == null)
-                    {
-                        try
-                        {
-                            var newUser = new User();
-                            {
-
-                                newUser.Login = LoginTb.Text;
-                                newUser.Password = PasswordTb.Password;
-                                newUser.IdRole = 1;
-                            }
-                            DBEntities.GetContext().User.Add(newUser);
-                            DBEntities.GetContext().SaveChanges();
-                            MessageBox.Show("Успех");
-
-                        }
-                        catch (System.Exception ex)
-                        {
-
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Пользователь существует");
-
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Пароль слишком слабый");
-                }
-
+                MessageBox.Show("Пароли не совпадают");
+                return;
             }
-                else
+
+            if (!IsStrongPassword(PasswordTb.Password))
+            {
+                MessageBox.Show("Пароль слишком слабый");
+                return;
+            }
+
+            if (exUser != null)
+            {
+                MessageBox.Show("Пользователь существует");
+                return;
+            }
+
+            try
+            {
+                DBEntities.GetContext().User.Add(new User
                 {
-                    MessageBox.Show("Пароли не совпадают");
-                }
-
+                    Login = LoginTb.Text,
+                    Password = PasswordTb.Password,
+                    IdRole = 1
+                });
+                DBEntities.GetContext().SaveChanges();
+                MessageBox.Show("Успех");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
 
         static bool IsStrongPassword(string password)
         {
-            if (password.Length < 8)
-                return false;
-
-            
-            string special = @"!@#$%^&*()_+-=[]{}|;:'"",.<>?/`~";
-
-            bool upper = password.Any(char.IsUpper);
-            bool lower = password.Any(char.IsLower);
-            bool digit = password.Any(char.IsDigit);
-            bool specChar = password.Any(c => special.Contains(c));
-            
-            return upper && lower && digit && specChar;
-            
+            return password.Length >= 8
+                && password.Any(char.IsUpper)
+                && password.Any(char.IsLower)
+                && password.Any(char.IsDigit)
+                && password.IndexOfAny("!@#$%^&*()_+-=[]{}|;:'\",.<>?/`~".ToCharArray()) != -1;
         }
+
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-           new AutorisationWindow().Show();
+            new AutorisationWindow().Show();
             Close();
         }
     }
