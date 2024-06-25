@@ -73,16 +73,16 @@
                  />
 
         <PasswordBox x:Name="PasswordTb"
-         Grid.Column="1"
+             Grid.Column="1"
          Grid.Row="4"
          Margin="10"
          />
 
         <PasswordBox x:Name="RepeatPasswordTb"
- Grid.Column="1"
- Grid.Row="3"
- Margin="10"
- />
+    Grid.Column="1"
+    Grid.Row="3"
+    Margin="10"
+        />
 
     </Grid>
 </Window>

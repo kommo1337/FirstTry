@@ -16,5 +16,6 @@ namespace FirstTry.DataFolder
     {
         public int IdImage { get; set; }
         public byte[] Image1 { get; set; }
+        public byte[] Audio { get; set; }
     }
 }

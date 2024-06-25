@@ -11,6 +11,7 @@
           </Key>
           <Property Name="IdImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Audio" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -192,6 +193,7 @@
           </Key>
           <Property Name="IdImage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Audio" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -255,6 +257,7 @@
           <EntitySetMapping Name="Image">
             <EntityTypeMapping TypeName="DBModel.Image">
               <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Audio" ColumnName="Audio" />
                 <ScalarProperty Name="Image1" ColumnName="Image" />
                 <ScalarProperty Name="IdImage" ColumnName="IdImage" />
               </MappingFragment>

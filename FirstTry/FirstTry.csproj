@@ -108,6 +108,9 @@
     <Compile Include="WindowFolder\EditUser.xaml.cs">
       <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\ImageAndAudio.xaml.cs">
+      <DependentUpon>ImageAndAudio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\ListUser.xaml.cs">
       <DependentUpon>ListUser.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\EditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\ImageAndAudio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

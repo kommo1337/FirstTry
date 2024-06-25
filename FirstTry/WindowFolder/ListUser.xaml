@@ -14,17 +14,18 @@
                     <MenuItem Header="Редактировать пользователя?" Name="ModifyIt" Click="ModifyIt_Click"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
-                
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Width="*" Binding="{Binding IdUser}"/>
                 <DataGridTextColumn Header="Логин" Width="*" Binding="{Binding Login}"/>
                 <DataGridTextColumn Header="Пароль" Width="*" Binding="{Binding Password}"/>
                 <DataGridTextColumn Header="Role" Width="*" Binding="{Binding Role.RoleName}"/>
-                
+
             </DataGrid.Columns>
         </DataGrid>
         <TextBox HorizontalAlignment="Left" Name="SearchTb" Margin="254,26,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Button Content="Поиск" HorizontalAlignment="Left" Margin="416,26,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Медиа" HorizontalAlignment="Left" Margin="594,26,0,0" VerticalAlignment="Top" Height="49" Width="126" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
